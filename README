@@ -1,0 +1,114 @@
+				        mod_fortress
+                    			Apache
+			      Application Level Firewall 
+					          and
+			      Intrusion Detection System
+
+
+
+	mod_fortress is an HTTP application firewall and intrusion detection
+ system, it relies on analysing requests sent from the client to the
+ webserver, and logs specific malicious requests with extensive info about
+ the attacker as well as the attacked server(if multiple virtual
+ servers). It also has the ability to act as a non-transparent proxy,
+ thus, protecting/obscuring your server via sending false return HTTP
+ error codes. 
+
+
+
+FEATURES:
+
+  * Detects and Logs common known cgi/http security requests and scans
+
+  * SSL support
+  
+  * Detects all known(and hopefully unknown) Anti-IDS Evasive Scaning methods
+   (Whisker, twwwscan, VoidEye...etc)
+
+  * "Fortress In the Middle": Ability to act as a non-transparent proxy
+    to modify HTTP return error codes.
+  
+  * Custom logging option via a changeable format string.
+
+  * Supports Apache 1.3/2.0 
+
+
+BEFORE BUILDING:
+  comment/uncomment he following directive in mod_fortress.h is you want to enable/disable them:
+   1- SHOW_VERSION_COMPONENT	      displays the module name in the "Server:" header
+				
+   2- RUN_FORTRESS_IN_THE_MIDDLE	enables the non-transparent proxy
+							
+   3- RUN_LOGGER			enables the IDS logger
+
+
+INSTALLATION:
+
+    just type 'make'
+
+
+
+FORMAT STRING OPTIONS:
+
+The following options are used with "FortressLogString" directive in httpd.conf
+
+	Request Based Flags:
+	---------------------
+	%Rr	whole request line
+	%Ru	uri
+	%Rd	request description
+	%Rq	query args
+	%Rp	protocol
+	%Rm	request method
+
+
+	Connection Based Flags:
+	------------------------
+	%Ci	remote ip
+	%Ch	remote hostname
+	%Cl	local ip
+	
+
+	Server Based Flags:
+	--------------------
+	%Sn	server name
+	%Sh	server hostname (local hostname)
+	%Sp	server port
+	%Sv	virtual host
+	%Sa	server admin
+		
+	Time Based Flags:
+	------------------
+	%Ts	second
+	%Tm	minute
+	%Th	hour
+	%Td	day
+	%TM	month
+	%Ty	year
+
+	Header-in Based Flags:
+	-----------------------
+	%H[header in name]	
+	eg: %H[User-Agent], %H[Accept], %H[Host]
+
+	Misc characters:
+	-----------------
+	& 	new line
+
+
+
+NON TRANSPARENT PROXY CODE:
+
+	Appended to each signature line is a tag like [xxx], this stands for 
+ the fake HTTP error code to return. If fortress in the middle was enabled, the 
+ number between the [] is returned as an HTTP error code (eg: 404, 403, 200), [0]
+ returns whatever Apache would return if there was no non-transparent proxy.
+
+
+LICENSE:
+
+	mod_fortress is released under the terms of the GNU General Public
+        License, check the file COPYING for more details.
+
+
+
