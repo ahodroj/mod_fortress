@@ -1,0 +1,19 @@
+mod_fortress:
+
+[0.3, beta2] added configuration defines
+[0.3, beta2] added strupper()
+[0.3, beta3] added return code parsing
+[0.3, beta3] added transparent/non-transparent behavior
+[0.3, beta3] added 2 structs
+[0.3, beta4] added format string logging option
+[0.3, beta4] added few useless comments
+[0.3, beta4] added more flags
+[0.3, stable] first stable release
+[0.4, stable] added more flags
+[0.4, 2.0 win32 port] added wildcard option by Anton Soudovstev <soudovstev@bluewin.ch>
+[0.4, 2.0 win32 port] signatures are now read from a seperate file insted of httpd.conf by
+                      Anton Soudvostev <anton@bluewin.ch>
+[1.0] ported Anton's port to unix
+[1.0] merged 1.3 and 2.0 code to make it compile under unix and win32
+
+

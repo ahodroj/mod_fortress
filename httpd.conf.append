@@ -1,0 +1,20 @@
+<IfModule mod_fortress.c>
+# the signatures
+
+# signatures file here is /directory_where_apache_was_installed/logs/signature.conf
+FortressSignatures logs/signatures.conf
+FortressLog logs/fortress
+FortressLogString      "\
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=[ %Th:%Tm:%Ts ]=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=& \
+= Source: %Ci & \
+= Destination: %Sh & \
+= Port: %Sp & \
+= Request Line: %Rr & \
+= Description: %Rd & \
+= Method: %Rm & \
+= Protocol: %Rp & \
+= Virtual Host: %Sv & \
+= User-Agent: %H[User-Agent] & \
+= Query Arguments: %Rq & \
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=&"
+</IfModule>
